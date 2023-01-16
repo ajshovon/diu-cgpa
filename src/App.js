@@ -2,15 +2,27 @@ import "./App.css";
 import Layout from "./components/layout/Layout";
 import Home from "./pages/Home";
 import "@fontsource/poppins";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Flowbite } from "flowbite-react";
 
 function App() {
   return (
+    <Flowbite
+    theme={{
+      theme: {
+        alert: {
+          root: {
+            color: {
+              primary: "bg-primary",
+            },
+          },
+        },
+      },
+    }}
+  >
     <Layout>
       <Home />
-      <ToastContainer autoClose={3000} />
-    </Layout>
+    </Layout></Flowbite>
   );
 }
 
