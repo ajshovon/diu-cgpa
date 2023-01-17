@@ -52,13 +52,15 @@ export const calculateCgpa = async (id, improvement) => {
     campus: studentInfo["campusName"],
     shift: studentInfo["shift"],
   };
+  let dropTest = 0;
   while (semester) {
     if (["1", "2", "3"].includes(semester.toString()[2])) {
       let tmp = await getSemesterResult(semester.toString(), id);
       if (tmp.length !== 0) {
         semesterResults.push(tmp);
-      } else break;
+      } else dropTest = dropTest + 1;
     }
+    if (dropTest > 2) break;
     semester += 1;
   }
 
