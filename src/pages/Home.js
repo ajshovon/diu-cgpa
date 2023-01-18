@@ -34,17 +34,21 @@ const Home = () => {
     }
     setIsLoading(true);
     calculateCgpa(studentID, checkImproved)
-      .then(([evp, result]) => {
+      .then(([inc, evp, result]) => {
         if (evp) {
-          toast.warning("Teaching Evaluation Pending! Calculation may not be correct.");
+          toast.warning("Teaching Evaluation Pending! Calculation May Not Be Correct.");
+        }
+        if (Number(inc) == 1) {
+          toast.error("Could Not Fetch All Results!");
+        } else {
+          toast.success("Action Successful!");
         }
         setResult(result);
         setIsLoading(false);
-        toast.success("Action Successful!");
       })
       .catch((err) => {
         toast.error("Network Error!");
-        setIsLoading(false)
+        setIsLoading(false);
         console.log(err);
       });
   };
