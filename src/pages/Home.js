@@ -71,7 +71,7 @@ const Home = () => {
                   type="text"
                   id="studentID"
                   ref={studentIDRef}
-                  className="text-center rounded-3xl border-transparent flex-1 appearance-none border border-gray-300 w-3/4 py-2 px-4 bg-white dark:bg-gray-800 text-gray-700 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 text-2xl focus:ring-primary-500 focus:border-transparent"
+                  className="text-center rounded-3xl border-transparent flex-1 appearance-none border border-gray-300 w-3/4 py-2 px-4 bg-white dark:bg-gray-800 dark:text-gray-200 text-gray-700 placeholder-gray-400 dark:placeholder-gray-500 shadow-sm focus:outline-none focus:ring-2 text-2xl focus:ring-primary-500 focus:border-transparent"
                   placeholder="191-15-12000"
                 />
               </div>
