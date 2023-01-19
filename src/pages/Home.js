@@ -82,7 +82,7 @@ const Home = () => {
               <CgpaCard cgpa={result[1][0]} /> <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">{result[0]["name"]}</h1>
               <h5 className="text-2xl text-gray-900 dark:text-white">{result[0]["program"]}</h5>
               <div className="flex flex-wrap justify-center">
-                <StatsCard name="Semester" value={result[2].length + "th"} />
+                <StatsCard name="Semesters" value={result[2].length} />
                 <StatsCard name="Batch" value={result[0]["batch"]} />
                 <StatsCard name="Credits" value={result[1][1]} />
                 <StatsCard name="Department" value={result[0]["department"]} />

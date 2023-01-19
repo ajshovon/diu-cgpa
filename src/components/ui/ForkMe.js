@@ -13,7 +13,7 @@ const ForkMe = () => {
       <span className="text-xs bg-primary-600 rounded-full text-white px-4 py-1.5 mr-3">
         <FiGithub />
       </span>{" "}
-      <span className="text-sm font-medium">Fork me on github!</span>
+      <span className="text-sm font-medium">Fork me on GitHub!</span>
       <FiChevronRight />{" "}
     </a>
   );
