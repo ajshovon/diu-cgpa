@@ -2,22 +2,13 @@ import Axios from "axios";
 
 const getStudentInfo = async (id) => {
   try {
-    const response = await Axios.get(`${process.env.REACT_APP_API_INFO}${id}`);
+    const response = await Axios.post(`${process.env.REACT_APP_API_FULL}${id}`);
     return response.data;
   } catch (error) {
     throw error;
   }
 };
 
-const getSemesterResult = async (semesterId, id) => {
-  try {
-    const response = await Axios.get(`${process.env.REACT_APP_API_RESULT}semesterId=${semesterId}&studentId=${id}`);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-};
-const semesterResults = [];
 const dupeResults = [];
 
 const calculateSgpaManual = (semester) => {
@@ -40,30 +31,7 @@ const calculateSgpaManual = (semester) => {
 };
 
 export const calculateCgpa = async (id, improvement) => {
-  const studentInfo = await getStudentInfo(id);
-  let semester = Number(studentInfo["semesterId"]);
-  const studentInfoObj = {
-    name: studentInfo["studentName"],
-    id: studentInfo["semesterId"],
-    program: studentInfo["progShortName"],
-    batch: studentInfo["batchNo"],
-    department: studentInfo["deptShortName"],
-    faculty: studentInfo["facShortName"],
-    campus: studentInfo["campusName"],
-    shift: studentInfo["shift"],
-  };
-  let dropTest = 0;
-  while (semester) {
-    if (["1", "2", "3"].includes(semester.toString()[2])) {
-      let tmp = await getSemesterResult(semester.toString(), id);
-      if (tmp.length !== 0) {
-        semesterResults.push(tmp);
-      } else dropTest = dropTest + 1;
-    }
-    if (dropTest > 2) break;
-    semester += 1;
-  }
-
+  const [inc ,studentInfoObj, semesterResults] = await getStudentInfo(id);
   let credits = 0;
   let weighted = 0;
   const resultsList = [];
@@ -92,6 +60,7 @@ export const calculateCgpa = async (id, improvement) => {
         credits = credits + semesterCredits.reduce((a, b) => a + b, 0); //sum of the array
         resultsList.push([semesterName, semesterYear, sc, sgpa]);
       } else {
+        // console.log(semester);
         let c = calculateSgpaManual(semester);
         credits = credits + c[2];
         resultsList.push(c);
@@ -145,7 +114,7 @@ export const calculateCgpa = async (id, improvement) => {
     let cgpa = (wd / cd).toFixed(2);
     semesterResults.length = 0;
     dupeResults.length = 0;
-    return [evp, [studentInfoObj, [cgpa, cd], resultsList]];
+    return [inc, evp, [studentInfoObj, [cgpa, cd], resultsList]];
   } else {
     let evp = false;
     for (let i of resultsList) {
@@ -155,6 +124,6 @@ export const calculateCgpa = async (id, improvement) => {
     let cgpa = (weighted / credits).toFixed(2);
     semesterResults.length = 0;
     dupeResults.length = 0;
-    return [evp, [studentInfoObj, [cgpa, credits], resultsList]];
+    return [inc, evp, [studentInfoObj, [cgpa, credits], resultsList]];
   }
 };
