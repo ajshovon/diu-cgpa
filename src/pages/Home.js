@@ -60,7 +60,7 @@ const Home = () => {
 
   return (
     <div>
-      <DarkThemeToggle onClick={toggleMode} className="absolute right-0 mt-2 mr-2" />
+      <DarkThemeToggle onChange={toggleMode} className="absolute right-0 mt-2 mr-2" />
       <section className="bg-white dark:bg-gray-900 flex min-h-[90vh]">
         <div className="py-8 px-4 m-auto mx-auto max-w-screen-xl text-center align-middle align-center justify-center">
           {!result && (
