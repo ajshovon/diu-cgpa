@@ -7,14 +7,17 @@ import CgpaCard from "../components/CgpaCard";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ResultTable from "../components/ResultTable";
-import { Accordion, Spinner, ToggleSwitch, DarkThemeToggle, useThemeMode } from "flowbite-react";
+import { Accordion, Spinner, ToggleSwitch, DarkThemeToggle, useThemeMode, Table, TextInput } from "flowbite-react";
 
 const Home = () => {
   const studentIDRef = useRef();
+  const projectCrRef = useRef();
+  const projectResRef = useRef();
   const [result, setResult] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [mode, setMode, toggleMode] = useThemeMode("dark");
   const [checkImproved, setCheckImproved] = useState(false);
+  const [checkProject, setCheckProject] = useState(false);
   const onChangeCheckBox = (e) => {
     if (!isLoading) {
       setCheckImproved(e);
@@ -28,12 +31,28 @@ const Home = () => {
 
   const calculateCgpHandler = () => {
     const studentID = studentIDRef.current.value.replace(/\s+/g, " ").trim();
+    let projectCredit = 0;
+    let projectResult = 0;
+    if (checkProject) {
+      projectCredit = projectCrRef.current.value.replace(/\s+/g, " ").trim();
+      projectResult = projectResRef.current.value.replace(/\s+/g, " ").trim();
+      if (!projectCredit) {
+        toast.warn("Fill up total project credits!");
+        return;
+      }
+      if (!projectResult) {
+        toast.warn("Fill up project grade!");
+        return;
+      }
+    }
+
     if (!studentID) {
       toast.warn("Blank Student ID!");
       return;
     }
+
     setIsLoading(true);
-    calculateCgpa(studentID, checkImproved)
+    calculateCgpa(studentID, checkImproved, checkProject, projectCredit, projectResult)
       .then(([inc, evp, result]) => {
         if (evp) {
           toast.warning("Teaching Evaluation Pending! Calculation May Not Be Correct.");
@@ -82,7 +101,7 @@ const Home = () => {
               <CgpaCard cgpa={result[1][0]} /> <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">{result[0]["name"]}</h1>
               <h5 className="text-2xl text-gray-900 dark:text-white">{result[0]["program"]}</h5>
               <div className="flex flex-wrap justify-center">
-                <StatsCard name="Semesters" value={result[2].length} />
+                <StatsCard name="Semesters" value={checkProject ? result[2].length - 1 : result[2].length} />
                 <StatsCard name="Batch" value={result[0]["batch"]} />
                 <StatsCard name="Credits" value={result[1][1]} />
                 <StatsCard name="Department" value={result[0]["department"]} />
@@ -121,9 +140,30 @@ const Home = () => {
                   )}
                 </button>
               </div>
-              <div className="flex mb-6 lg:mb-8 space-y-4 flex-row justify-center sm:space-y-0 sm:space-x-4">
+              <div className="flex mb-6 lg:mb-8 space-y-4 justify-center sm:space-y-0 sm:space-x-4">
                 <ToggleSwitch checked={checkImproved} label="Attended Improvement" onChange={onChangeCheckBox} />
               </div>
+              <div className="flex mb-6 lg:mb-8 space-y-4 justify-center sm:space-y-0 sm:space-x-4">
+                <ToggleSwitch checked={checkProject} label="Include Project Result" onChange={setCheckProject} />
+              </div>
+              {checkProject && (
+                <Table>
+                  <Table.Head>
+                    <Table.HeadCell>Credits</Table.HeadCell>
+                    <Table.HeadCell>Result</Table.HeadCell>
+                  </Table.Head>
+                  <Table.Body className="divide-y">
+                    <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                      <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                        <TextInput id="small" type="number" sizing="sm" placeholder="6" defaultValue="6" ref={projectCrRef} />
+                      </Table.Cell>
+                      <Table.Cell>
+                        <TextInput id="small" type="number" step="0.01" sizing="sm" placeholder="4.0" ref={projectResRef} />
+                      </Table.Cell>
+                    </Table.Row>
+                  </Table.Body>
+                </Table>
+              )}
             </>
           )}
         </div>

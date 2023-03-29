@@ -30,8 +30,8 @@ const calculateSgpaManual = (semester) => {
   return [semesterName, semesterYear, sc, wa];
 };
 
-export const calculateCgpa = async (id, improvement) => {
-  const [inc ,studentInfoObj, semesterResults] = await getStudentInfo(id);
+export const calculateCgpa = async (id, improvement, checkProject, projectCredit, projectResult) => {
+  const [inc, studentInfoObj, semesterResults] = await getStudentInfo(id);
   let credits = 0;
   let weighted = 0;
   const resultsList = [];
@@ -99,6 +99,15 @@ export const calculateCgpa = async (id, improvement) => {
       resultsList.push([semesterName, semesterYear, scredit, sgpa]);
     }
   }
+
+  if (checkProject) {
+    credits = credits + Number(projectCredit);
+    resultsList.push(["Final Year Project", "", Number(projectCredit), parseFloat(projectResult)]);
+    if (improvement) {
+      dupeResults.push(["Project", Number(projectCredit), parseFloat(projectResult)]);
+    }
+  }
+
   if (improvement) {
     let wd = 0;
     let cd = 0;
