@@ -1,4 +1,4 @@
-import { Accordion, DarkThemeToggle, Spinner, Table, TextInput, ToggleSwitch, useThemeMode } from 'flowbite-react';
+import { Accordion, DarkThemeToggle, Spinner, Table, TextInput, ToggleSwitch } from 'flowbite-react';
 import { useRef, useState } from 'react';
 import { FiChevronRight } from 'react-icons/fi';
 import { ToastContainer, toast } from 'react-toastify';
@@ -9,7 +9,7 @@ import StatsCard from '../components/StatsCard';
 import ForkMe from '../components/ui/ForkMe';
 import { calculateCgpa } from '../utils/utils';
 
-const Home = () => {
+const Home = ({ darkMode }) => {
   const studentIDRef = useRef();
   const projectCrRef = useRef();
   const projectResRef = useRef();
@@ -19,14 +19,13 @@ const Home = () => {
   const [checkProject, setCheckProject] = useState(false);
   const customThemeToggleSwitch = {
     toggle: {
-      base: "after:rounded-full rounded-full border group-focus:ring-4 group-focus:ring-cyan-500/25",
+      base: 'after:rounded-full rounded-full border group-focus:ring-4 group-focus:ring-cyan-500/25',
       checked: {
-          on: "after:bg-white after:translate-x-full",
-          off: "after:bg-gray-400 dark:after:bg-gray-500 border-gray-200 bg-gray-200 dark:border-gray-600 dark:bg-gray-700",
+        on: 'after:bg-white after:translate-x-full',
+        off: 'after:bg-gray-400 dark:after:bg-gray-500 border-gray-200 bg-gray-200 dark:border-gray-600 dark:bg-gray-700',
       },
     },
-};
-  const { mode } = useThemeMode('dark');
+  };
   const onChangeCheckBox = (e) => {
     if (!isLoading) {
       setCheckImproved(e);
@@ -95,13 +94,7 @@ const Home = () => {
             <>
               <ForkMe />
               <div className=" relative mb-8">
-                <input
-                  type="text"
-                  id="studentID"
-                  ref={studentIDRef}
-                  className="text-center rounded-3xl border-transparent flex-1 appearance-none border border-gray-300 w-3/4 py-2 px-4 bg-white dark:bg-gray-800 dark:text-gray-200 text-gray-700 placeholder-gray-400 dark:placeholder-gray-500 shadow-sm focus:outline-none focus:ring-2 text-2xl focus:ring-primary-500 focus:border-transparent"
-                  placeholder="191-15-12000"
-                />
+                <input type="text" id="studentID" ref={studentIDRef} className="text-center rounded-3xl border-transparent flex-1 appearance-none border border-gray-300 w-3/4 py-2 px-4 bg-white dark:bg-gray-800 dark:text-gray-200 text-gray-700 placeholder-gray-400 dark:placeholder-gray-500 shadow-sm focus:outline-none focus:ring-2 text-2xl focus:ring-primary-500 focus:border-transparent" placeholder="191-15-12000" />
               </div>
             </>
           )}
@@ -136,21 +129,20 @@ const Home = () => {
           )}
           {!result && (
             <>
-         
-                <div className="flex flex-col mb-6 lg:mb-8 space-y-4  justify-center sm:space-y-0 sm:space-x-4">
-                  <button type="submit" onClick={calculateCgpHandler} disabled={isLoading} className="inline-flex justify-center items-center bg-primary-600 rounded-full text-white px-4 py-3 transition duration-300 ease-in-out hover:primary-800 mr-6 ml-6">
-                    {isLoading ? (
-                      <>
-                        Loading... <Spinner aria-label="Loading..." color="purple" className="ml-2 mb-1" size="sm" />
-                      </>
-                    ) : (
-                      <>
-                        Calculate <FiChevronRight />
-                      </>
-                    )}
-                  </button>
-                </div>
-        
+              <div className="flex flex-col mb-6 lg:mb-8 space-y-4  justify-center sm:space-y-0 sm:space-x-4">
+                <button type="submit" onClick={calculateCgpHandler} disabled={isLoading} className="inline-flex justify-center items-center bg-primary-600 rounded-full text-white px-4 py-3 transition duration-300 ease-in-out hover:primary-800 mr-6 ml-6">
+                  {isLoading ? (
+                    <>
+                      Loading... <Spinner aria-label="Loading..." color="purple" className="ml-2 mb-1" size="sm" />
+                    </>
+                  ) : (
+                    <>
+                      Calculate <FiChevronRight />
+                    </>
+                  )}
+                </button>
+              </div>
+
               <div className="flex mb-6 lg:mb-8 space-y-4 justify-center sm:space-y-0 sm:space-x-4">
                 <ToggleSwitch theme={customThemeToggleSwitch} checked={checkImproved} label="Attended Improvement" onChange={onChangeCheckBox} />
               </div>
@@ -179,7 +171,7 @@ const Home = () => {
           )}
         </form>
       </section>
-      <ToastContainer autoClose={3000} theme={mode} />
+      <ToastContainer autoClose={3000} theme={darkMode} />
     </div>
   );
 };
