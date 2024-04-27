@@ -1,5 +1,4 @@
-import React from "react";
-import { Card } from "flowbite-react";
+import { Card } from 'flowbite-react';
 const CgpaCard = (props) => {
   return (
     <div>

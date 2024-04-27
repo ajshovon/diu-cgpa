@@ -1,8 +1,8 @@
-import Axios from "axios";
+import Axios from 'axios';
 
 const getStudentInfo = async (id) => {
   try {
-    const response = await Axios.post(`${process.env.REACT_APP_API_FULL}${id}`);
+    const response = await Axios.post(`${import.meta.env.VITE_API_FULL}${id}`);
     return response.data;
   } catch (error) {
     throw error;
@@ -14,15 +14,15 @@ const dupeResults = [];
 const calculateSgpaManual = (semester) => {
   let sc = 0;
   let weighted = 0;
-  let semesterName = "";
-  let semesterYear = "";
+  let semesterName = '';
+  let semesterYear = '';
   let wa = 0;
   for (let c of semester) {
-    if (c["gradeLetter"] != "F") {
-      semesterName = c["semesterName"];
-      semesterYear = c["semesterYear"];
-      weighted = parseFloat(weighted) + parseFloat(c["totalCredit"]) * parseFloat(c["pointEquivalent"]);
-      sc = sc + Number(c["totalCredit"]);
+    if (c['gradeLetter'] != 'F') {
+      semesterName = c['semesterName'];
+      semesterYear = c['semesterYear'];
+      weighted = parseFloat(weighted) + parseFloat(c['totalCredit']) * parseFloat(c['pointEquivalent']);
+      sc = sc + Number(c['totalCredit']);
     }
   }
   wa = (weighted / sc).toFixed(2);
@@ -39,20 +39,20 @@ export const calculateCgpa = async (id, improvement, checkProject, projectCredit
     if (!Boolean(improvement)) {
       let sgpa = 0;
       let semesterCredits = [];
-      let semesterName = "";
-      let semesterYear = "";
+      let semesterName = '';
+      let semesterYear = '';
       let drop = false;
       for (const course of semester) {
-        if (course["gradeLetter"] == "F") {
+        if (course['gradeLetter'] == 'F') {
           drop = true;
           break;
         }
-        if (course["cgpa"]) {
-          sgpa = parseFloat(course["cgpa"]);
-          semesterName = course["semesterName"];
-          semesterYear = course["semesterYear"];
+        if (course['cgpa']) {
+          sgpa = parseFloat(course['cgpa']);
+          semesterName = course['semesterName'];
+          semesterYear = course['semesterYear'];
         }
-        semesterCredits.push(Number(course["totalCredit"]));
+        semesterCredits.push(Number(course['totalCredit']));
       }
       if (!Boolean(drop)) {
         let sc;
@@ -71,17 +71,17 @@ export const calculateCgpa = async (id, improvement, checkProject, projectCredit
       let semesterYear;
       let scredit = 0;
       for (const course of semester) {
-        scredit = scredit + Number(course["totalCredit"]);
-        if (course["gradeLetter"] != "F") {
-          let n = course["courseId"];
-          let c = course["totalCredit"];
-          let r = course["pointEquivalent"];
+        scredit = scredit + Number(course['totalCredit']);
+        if (course['gradeLetter'] != 'F') {
+          let n = course['courseId'];
+          let c = course['totalCredit'];
+          let r = course['pointEquivalent'];
           let tmpObj = [n, c, r];
           let marked = false;
-          if (course["cgpa"]) {
-            sgpa = parseFloat(course["cgpa"]);
-            semesterName = course["semesterName"];
-            semesterYear = course["semesterYear"];
+          if (course['cgpa']) {
+            sgpa = parseFloat(course['cgpa']);
+            semesterName = course['semesterName'];
+            semesterYear = course['semesterYear'];
           }
           for (let i in dupeResults) {
             if (dupeResults[i][0] == n) {
@@ -102,9 +102,9 @@ export const calculateCgpa = async (id, improvement, checkProject, projectCredit
 
   if (checkProject) {
     credits = credits + Number(projectCredit);
-    resultsList.push(["Final Year Project", "", Number(projectCredit), parseFloat(projectResult)]);
+    resultsList.push(['Final Year Project', '', Number(projectCredit), parseFloat(projectResult)]);
     if (improvement) {
-      dupeResults.push(["Project", Number(projectCredit), parseFloat(projectResult)]);
+      dupeResults.push(['Project', Number(projectCredit), parseFloat(projectResult)]);
     }
   }
 
