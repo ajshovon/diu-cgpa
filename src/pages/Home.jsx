@@ -7,6 +7,7 @@ import CgpaCard from '../components/CgpaCard';
 import ResultTable from '../components/ResultTable';
 import StatsCard from '../components/StatsCard';
 import ForkMe from '../components/ui/ForkMe';
+import Notice from '../components/ui/Notice';
 import { calculateCgpa } from '../utils/utils';
 
 const Home = ({ darkMode }) => {
@@ -17,15 +18,7 @@ const Home = ({ darkMode }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [checkImproved, setCheckImproved] = useState(false);
   const [checkProject, setCheckProject] = useState(false);
-  const customThemeToggleSwitch = {
-    toggle: {
-      base: 'after:rounded-full rounded-full border group-focus:ring-4 group-focus:ring-cyan-500/25',
-      checked: {
-        on: 'after:bg-white after:translate-x-full',
-        off: 'after:bg-gray-400 dark:after:bg-gray-500 border-gray-200 bg-gray-200 dark:border-gray-600 dark:bg-gray-700',
-      },
-    },
-  };
+
   const onChangeCheckBox = (e) => {
     if (!isLoading) {
       setCheckImproved(e);
@@ -90,6 +83,7 @@ const Home = ({ darkMode }) => {
       <DarkThemeToggle theme={`dark`} className="absolute right-0 mt-2 mr-2" />
       <section className="bg-white dark:bg-gray-900 flex min-h-[90vh]">
         <form className="py-8 px-4 m-auto mx-auto max-w-screen-xl text-center align-middle align-center justify-center">
+          {!result && <Notice />}
           {!result && (
             <>
               <ForkMe />
@@ -144,10 +138,10 @@ const Home = ({ darkMode }) => {
               </div>
 
               <div className="flex mb-6 lg:mb-8 space-y-4 justify-center sm:space-y-0 sm:space-x-4">
-                <ToggleSwitch theme={customThemeToggleSwitch} checked={checkImproved} label="Attended Improvement" onChange={onChangeCheckBox} />
+                <ToggleSwitch checked={checkImproved} label="Attended Improvement" onChange={onChangeCheckBox} />
               </div>
               <div className="flex mb-6 lg:mb-8 space-y-4 justify-center sm:space-y-0 sm:space-x-4">
-                <ToggleSwitch theme={customThemeToggleSwitch} checked={checkProject} label="Include Project Result" onChange={setCheckProject} />
+                <ToggleSwitch checked={checkProject} label="Include Project Result" onChange={setCheckProject} />
               </div>
               {checkProject && (
                 <Table>
