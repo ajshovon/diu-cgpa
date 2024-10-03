@@ -1,4 +1,7 @@
-const Loader = ({ darkMode }) => {
+import { useThemeMode } from 'flowbite-react';
+
+const Loader = () => {
+  const { computedMode: darkMode } = useThemeMode();
   return (
     <div className={`flex h-[100vh] ${darkMode == 'light' ? 'bg-white' : 'bg-[#111827]'} items-center justify-center p-5 min-w-screen`}>
       <div className="flex space-x-2 animate-pulse">

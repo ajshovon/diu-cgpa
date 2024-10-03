@@ -1,4 +1,4 @@
-import { Accordion, DarkThemeToggle, Spinner, Table, TextInput, ToggleSwitch } from 'flowbite-react';
+import { Accordion, DarkThemeToggle, Spinner, Table, TextInput, ToggleSwitch, useThemeMode } from 'flowbite-react';
 import { useRef, useState } from 'react';
 import { FiChevronRight } from 'react-icons/fi';
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,7 +10,7 @@ import ForkMe from '../components/ui/ForkMe';
 import Notice from '../components/ui/Notice';
 import { calculateCgpa } from '../utils/utils';
 
-const Home = ({ darkMode }) => {
+const Home = () => {
   const studentIDRef = useRef();
   const projectCrRef = useRef();
   const projectResRef = useRef();
@@ -19,6 +19,7 @@ const Home = ({ darkMode }) => {
   const [checkImproved, setCheckImproved] = useState(false);
   const [checkProject, setCheckProject] = useState(false);
 
+  const { computedMode: darkMode } = useThemeMode();
   const onChangeCheckBox = (e) => {
     if (!isLoading) {
       setCheckImproved(e);

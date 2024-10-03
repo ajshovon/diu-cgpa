@@ -1,5 +1,5 @@
 import '@fontsource/poppins';
-import { Flowbite, useThemeMode } from 'flowbite-react';
+import { Flowbite } from 'flowbite-react';
 import React, { Suspense } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
@@ -9,10 +9,6 @@ const Home = React.lazy(() => import('./pages/Home'));
 const Layout = React.lazy(() => import('./components/layout/Layout'));
 
 function App() {
-  const { mode, computedMode } = useThemeMode();
-  let darkMode;
-  if (mode == 'auto') darkMode = computedMode;
-  else darkMode = mode;
   return (
     <Flowbite
       theme={{
@@ -28,9 +24,9 @@ function App() {
         },
       }}
     >
-      <Suspense fallback={<Loader darkMode={darkMode} />}>
+      <Suspense fallback={<Loader />}>
         <Layout>
-          <Home darkMode={darkMode} />
+          <Home/>
         </Layout>
       </Suspense>
     </Flowbite>
