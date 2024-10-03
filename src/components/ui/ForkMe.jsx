@@ -3,7 +3,7 @@ import { FiChevronRight, FiGithub } from 'react-icons/fi';
 const ForkMe = () => {
   return (
     <a
-      href="https://github.com/shovon382/diu-cgpa"
+      href="https://redirect.shovon.me/diu-cgpa-github"
       target="_blank"
       rel="noopener noreferrer"
       className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
