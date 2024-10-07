@@ -1,0 +1,20 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "files.eol": "\n",
+  "editor.codeActionsOnSave": {
+    "source.addMissingImports": "explicit",
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit",
+    "source.sortMembers": "explicit"
+  },
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "cSpell.words": ["CGPA", "clsx", "dtos", "grecaptcha", "Hono", "infocard", "nestjs", "nextjs", "nextui", "signin", "sonner", "teval", "typeorm"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  "prettier.singleQuote": false,
+  "prettier.printWidth": 200,
+  "editor.insertSpaces": true,
+  "prettier.useTabs": false
+}

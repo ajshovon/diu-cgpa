@@ -1,0 +1,9 @@
+name = "diu-cgpa-calculator"
+compatibility_date = "2024-10-06"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+BACKBONE_RESULT = ""
+BACKBONE_INFO = ""
+H = ''
+NEXT_TELEMETRY_DISABLED = 1
