@@ -79,8 +79,12 @@ const HomePage = () => {
         setCalculated(true);
         setIsLoading(false);
       })
-      .catch(() => {
-        toast.error("Network Error!");
+      .catch((error) => {
+        if (error.message === "Invalid ID") {
+          toast.error("Invalid Student ID!");
+        } else {
+          toast.error("Network Error!");
+        }
         setIsLoading(false);
       });
   };

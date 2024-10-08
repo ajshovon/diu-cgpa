@@ -3,6 +3,10 @@ import { SingleResult } from "./type";
 const getStudentInfo = async (id: string) => {
   try {
     const response = await fetch("/api/result/full?id=" + id);
+
+    if (response.status === 404) {
+      throw new Error("Invalid ID");
+    }
     const data = await response.json();
 
     // need to update the backend

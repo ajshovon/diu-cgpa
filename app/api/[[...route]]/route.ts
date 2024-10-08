@@ -3,6 +3,7 @@ import { Hono } from "hono";
 import { env } from "hono/adapter";
 import { cors } from "hono/cors";
 import { csrf } from "hono/csrf";
+import { HTTPException } from "hono/http-exception";
 import { secureHeaders } from "hono/secure-headers";
 import { handle } from "hono/vercel";
 import { z } from "zod";
@@ -55,6 +56,9 @@ app.get(
       shift: dataInfo["shift"],
     };
 
+    if (!studentInfoObj?.name && !studentInfoObj?.id) {
+      throw new HTTPException(404, { message: "Invalid ID" });
+    }
     const semesterResults: any[] = [];
     let totalChecks = 0;
 
