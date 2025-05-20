@@ -1,0 +1,41 @@
+name: Deploy DIU CGPA APP
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        run: docker build -t diu-cgpa-web:latest .
+
+      - name: Save and compress Docker image
+        run: docker save diu-cgpa-web:latest | zstd -o diu-cgpa-web.tar.zst
+
+      - name: Upload Docker Compose file to VPS
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          port: ${{ secrets.VPS_PORT }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          source: "diu-cgpa-web.tar.zst,docker-compose.yml"
+          target: ${{ secrets.VPS_TARGET_PATH }}
+          overwrite: true
+
+      - name: Deploy Docker Image to VPS
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          port: ${{ secrets.VPS_PORT }}
+          script: "docker load -i '${{ secrets.VPS_TARGET_PATH }}/diu-cgpa-web.tar.zst' && docker compose -f '${{ secrets.VPS_TARGET_PATH }}/docker-compose.yml' up -d"

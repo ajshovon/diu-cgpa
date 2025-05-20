@@ -1,0 +1,17 @@
+{
+  "name": "@diu-cgpa/types",
+  "version": "3.0.0",
+  "description": "",
+  "scripts": {
+    "build": "pnpm exec tsc",
+    "dev": "pnpm exec tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}

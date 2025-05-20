@@ -1,0 +1,9 @@
+services:
+  app:
+    container_name: diu-cgpa-web
+    image: diu-cgpa-web:latest
+    environment:
+      PORT: 7500
+      APIS: "" # WORKER API URL
+    network_mode: host
+    restart: unless-stopped

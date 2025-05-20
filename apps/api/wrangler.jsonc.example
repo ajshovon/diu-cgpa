@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "diu-cgpa-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-05-15",
+  "vars": {
+    "BACKBONE_RESULT": "", //string
+    "BACKBONE_INFO": "", //string
+    "ID": "", //string
+    "H": "" //string
+  },
+  "observability": {
+    "enabled": true
+  }
+}

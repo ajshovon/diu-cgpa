@@ -16,5 +16,11 @@
   "prettier.singleQuote": false,
   "prettier.printWidth": 200,
   "editor.insertSpaces": true,
-  "prettier.useTabs": false
+  "prettier.useTabs": false,
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  }
 }

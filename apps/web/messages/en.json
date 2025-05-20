@@ -1,0 +1,49 @@
+{
+  "HomePage": {
+    "title-color": "DIU",
+    "title-default": "CGPA Calculator",
+    "subtitle": "Calculate your CGPA with ease.",
+    "github-fork": "Fork on GitHub",
+    "student-id": "Student ID",
+    "calculate": "Calculate",
+    "calculating": "Calculating...",
+    "improve": "Attended Improvement",
+    "project": "Include Project Result",
+    "credit": "Credit",
+    "result": "Result",
+    "action-success": "Action Successful!",
+    "action-err-id": "Invalid Student ID!",
+    "action-err-network": "Network Error!",
+    "action-err-result": "Could Not Fetch All Results!",
+    "action-err-te": "Teaching Evaluation Pending! Calculation May Not Be Correct.",
+    "action-wrn-project-credit": "Fill up total project credits!",
+    "action-wrn-project-res": "Fill up project grade!",
+    "action-wrn-id": "Blank Student ID!",
+    "action-info-te": "Make Sure All Teaching Evaluations Are Completed!",
+    "semester": "Semester",
+    "sgpa": "SGPA",
+    "calculate-again": "Calculate Again",
+    "faq": "FAQ"
+  },
+  "faq": {
+    "faq-title": "FAQ",
+    "list": [
+      {
+        "title": "What is CGPA?",
+        "content": "CGPA stands for Cumulative Grade Point Average. It is used to measure a student's academic performance."
+      },
+      {
+        "title": "How CGPA is Calculated?",
+        "content": "CGPA is calculated by taking the weighted average of the grade points based on the credit hours of each course. For instance, if a student has three courses where the first is 2 credits with a grade point of 4.00, the second is 1 credit with a grade point of 3.75, and the third is 3 credits with a grade point of 3.75, then the CGPA would be (2×4.00 + 1×3.75 + 3×3.75) divided by the total credits (2+1+3), resulting in a CGPA of 3.83."
+      },
+      {
+        "title": "My CGPA is not displaying correctly",
+        "content": "This may happen if you have not completed all your courses or if there are pending evaluations or all credit results were not fetched. Kindly check completed credits and grades."
+      },
+      {
+        "title": "What is the difference between SGPA and CGPA?",
+        "content": "SGPA (Semester Grade Point Average) is the average of grade points earned in a semester, while CGPA is the cumulative average of all semesters."
+      }
+    ]
+  }
+}
