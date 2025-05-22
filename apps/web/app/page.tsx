@@ -19,7 +19,7 @@ export default function Home() {
         </h1>
         <div className={subtitle({ class: "mt-4" })}>{t("subtitle")}</div>
       </div>
-      <Link isExternal className="flex items-center gap-1 text-current" href="https://redirect.shovon.me/diu-cgpa-github" title="DIU CGPA source code">
+      <Link className="flex items-center gap-1 text-current" target='_blank' href="https://redirect.shovon.me/diu-cgpa-github" title="DIU CGPA source code">
         <Chip avatar={<PiGithubLogoDuotone />} variant="flat">
           {t("github-fork")} &gt;
         </Chip>
