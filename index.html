@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DIU CGPA - EOL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg-color: #ffffff;
+        --text-color: #333333;
+        --text-muted: #666666;
+        --border-color: #e5e7eb;
+        --card-bg: #f9fafb;
+        --blue-color: #4285f4;
+        --blue-hover: #3367d6;
+        --warning-color: #ff6b35;
+        --warning-bg: #fff3e0;
+        --header-bg: rgba(255, 255, 255, 0.8);
+      }
+
+      [data-theme="dark"] {
+        --bg-color: #0a0a0a;
+        --text-color: #e5e5e5;
+        --text-muted: #a3a3a3;
+        --border-color: #262626;
+        --card-bg: #171717;
+        --blue-color: #4285f4;
+        --blue-hover: #5a9cff;
+        --warning-color: #ff8a65;
+        --warning-bg: #2d1b0f;
+        --header-bg: rgba(10, 10, 10, 0.8);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "JetBrains Mono", monospace;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100vh;
+      }
+      main {
+        flex: 1;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--header-bg);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+        padding: 1rem 0;
+      }
+
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--blue-color);
+        text-decoration: none;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+      }
+
+      .theme-toggle {
+        background: none;
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        padding: 0.5rem;
+        cursor: pointer;
+        color: var(--text-color);
+        transition: all 0.2s ease;
+      }
+
+      .theme-toggle:hover {
+        background: var(--card-bg);
+      }
+
+      .theme-toggle svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 4rem 0;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+        color: var(--blue-color);
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+      }
+
+      .hero img {
+        max-width: 100%;
+        height: auto;
+        margin-top: 1rem;
+      }
+
+      a {
+        color: var(--blue-color);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .footer {
+        border-top: 1px solid var(--border-color);
+        padding: 2rem 0;
+        margin-top: 4rem;
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .header-content,
+        .container {
+          padding: 0 1rem;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-content">
+        <p class="logo">DIU CGPA</p>
+        <nav class="nav">
+          <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5" />
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <section class="hero">
+          <h1>service unavailable notice</h1>
+          <p>diu cgpa calculator is discontinued</p>
+          <p>
+            i started this project as a hobby back in 2022 as a small side project. over the years, it gained popularity, and i hope many people have found it useful. recently, the public backend api was shut down, causing the web app to stop working. currently, i am not in a position to continue
+            the project further. the <a href="https://redirect.shovon.me/diu-cgpa-github" target="_blank">source code</a> is public for anyone to fork and work on.
+          </p>
+          <p>
+            <a href="http://shovon.me" target="_blank">- shovon</a>
+          </p>
+
+          <img src="https://skillicons.dev/icons?i=js,ts,c,cpp,python" alt="Languages" />
+          <img src="https://skillicons.dev/icons?i=react,nextjs,expressjs,nestjs,tailwind,bootstrap" alt="Frameworks" />
+          <img src="https://skillicons.dev/icons?i=git,github,linux,docker,kubernetes,ansible,postman" alt="Dev Tools" />
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; [.shovon] 2025</p>
+      </div>
+    </footer>
+
+    <script>
+      function toggleTheme() {
+        const html = document.documentElement;
+        const currentTheme = html.getAttribute("data-theme");
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        html.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+
+        document.querySelector(".sun-icon").style.display = newTheme === "dark" ? "none" : "block";
+        document.querySelector(".moon-icon").style.display = newTheme === "dark" ? "block" : "none";
+      }
+
+      function initTheme() {
+        const savedTheme = localStorage.getItem("theme") || "light";
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = savedTheme === "auto" ? (prefersDark ? "dark" : "light") : savedTheme;
+        document.documentElement.setAttribute("data-theme", theme);
+
+        document.querySelector(".sun-icon").style.display = theme === "dark" ? "none" : "block";
+        document.querySelector(".moon-icon").style.display = theme === "dark" ? "block" : "none";
+      }
+
+      document.addEventListener("DOMContentLoaded", initTheme);
+    </script>
+  </body>
+</html>
