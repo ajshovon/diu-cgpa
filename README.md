@@ -1,5 +1,7 @@
 # DIU CGPA Calculator
 
+> Notice: The project is not longer maintained
+
 Welcome to the DIU CGPA Calculator project! This tool helps students of DIU to calculate their CGPA easily and accurately.
 
 ## Technical Overview
